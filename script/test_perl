@@ -1,0 +1,68 @@
+#!/usr/bin/perl -w
+use lib "/usr/local/netfpga/lib/Perl5";
+use strict;
+
+my $RV64I_REQ_RW_ADDR_IN_REG  = 0x2000200;
+my $RV64I_DIN_HIGH_REG        = 0x2000204;
+my $RV64I_DIN_LOW_REG         = 0x2000208;
+my $RV64I_REQ_RW_ADDR_OUT_REG = 0x200020c;
+my $RV64I_DOUT_HIGH_REG       = 0x2000210;
+my $RV64I_DOUT_LOW_REG        = 0x2000214;
+
+sub regwrite {
+   my( $addr, $value ) = @_;
+   my $cmd = sprintf( "regwrite $addr 0x%08x", $value );
+   my $result = `$cmd`;
+   # print "Ran command '$cmd' and got result '$result'\n";
+}
+
+sub regread {
+   my( $addr ) = @_;
+   my $cmd = sprintf( "regread $addr" );
+   my @out = `$cmd`;
+   my $result = $out[0];
+   if ( $result =~ m/Reg (0x[0-9a-f]+) \((\d+)\):\s+(0x[0-9a-f]+) \((\d+)\)/ ) {
+      $result = $3;
+   }
+   return $result;
+}
+
+sub usage {
+   print "Usage: idsreg <cmd> <cmd options>\n";
+   print "  Commands:\n";
+   print "  memwrite: write data into memory\n";
+   print "  memread: read data from memory\n";
+}
+
+my $numargs = $#ARGV + 1;
+if( $numargs < 1 ) {
+   usage();
+   exit(1);
+}
+
+my $cmd = $ARGV[0];
+if ($cmd eq "memwrite") {
+   if ($numargs < 3) {
+      usage();
+      exit(1);
+   }
+   my $addr = $ARGV[1];
+   my $data = $ARGV[2];
+   printf("Writing to address 0x%08x with data=0x%08x\n", $data, $addr);
+   regwrite($RISCV64_BADDR_WR, $addr);
+   regwrite($BIN_HIGH, $data & 0xffff0000);
+   regwrite($BIN_LOW, $data & 0x0000ffff);
+}
+elsif ($cmd eq "memread") {
+   my $addr = hex($ARGV[1]);
+   printf("Reading from address 0x%02x\n", $addr);
+   regwrite($RISCV64_BADDR_WR, $addr);
+   my $data_high = regread($BOUT_HIGH);
+   my $data_low = regread($BOUT_LOW);
+   print $data_high, $data_low, "\n";
+}
+else {
+   print "Unrecognized command $cmd\n";
+   usage();
+   exit(1)
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nf:module xmlns:nf="http://www.NetFPGA.org/NF2_register_system" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.NetFPGA.org/NF2_register_system NF2_register_system.xsd ">
+	<nf:name>rv64i</nf:name>
+	<nf:prefix>rv64i</nf:prefix>
+	<nf:location>udp</nf:location>
+	<nf:description>Register Interface</nf:description>
+	<nf:blocksize>64</nf:blocksize>
+	<nf:registers>
+		<nf:register>
+		  <nf:name>ctrl_in</nf:name>
+			<nf:description>Write into control signals</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>din_low</nf:name>
+			<nf:description>Lower 32 bits of data about to write into memory</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>din_high</nf:name>
+			<nf:description>Higher 32 bits of data about to write into memory</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>pattern_in</nf:name>
+			<nf:description>Higher 32 bits of data about to write into memory</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>pattern_low</nf:name>
+			<nf:description>Higher 32 bits of data about to write into memory</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>pattern_high</nf:name>
+			<nf:description>Higher 32 bits of data about to write into memory</nf:description>
+			<nf:type>generic_software32</nf:type>
+		</nf:register>
+        <nf:register>
+		  <nf:name>dout_low</nf:name>
+			<nf:description>Lower 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>dout_high</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data0</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data1</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data2</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data3</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data4</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data5</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data6</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+		<nf:register>
+		  <nf:name>hw_data7</nf:name>
+			<nf:description>Higher 32 bits of data about to read from memory</nf:description>
+			<nf:type>generic_hardware32</nf:type>
+		</nf:register>
+	</nf:registers>
+</nf:module>
+
